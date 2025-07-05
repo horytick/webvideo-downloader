@@ -36,11 +36,10 @@ def parseIqiyiMpd(content, headers = {}):
 
     for item in items:
         mType = item.attrib['mimeType'].split('/')[0]
-        segName = XMLUtils.findtext(item, 'BaseURL')
-        clipItems = XMLUtils.findall(root, "clip_list/clip[BaseURL='%s']" % segName)
+        clipItems = XMLUtils.findall(item, "SegmentList/SegmentURL")
 
         for clip in clipItems:
-            infoUrl = XMLUtils.findtext(clip, 'remote_path').replace('&amp;', '&')
+            infoUrl = clip.attrib['media']
             mediaInfo = json.loads(tools.getText(infoUrl, headers))
             mediaUrls[mType].append(mediaInfo['l'])
 

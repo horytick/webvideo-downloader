@@ -297,7 +297,7 @@ function iqiyi_parseResult(rs) {
           }),
         300,
       );
-    $.waitForTitleChange(updateFn, storage.downloadBtn ? 3000 : 0);
+    $.waitfortitlechange(updatefn, storage.downloadbtn ? 3000 : 0);
   }
 }
 
